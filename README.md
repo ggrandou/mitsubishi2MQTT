@@ -22,7 +22,7 @@ Config page
 
 ***
 How to use:
- - Step 1: flash the sketch with flash size include SPIFFS option.
+ - Step 1: flash the sketch with flash size include SPIFFS/LittleFS option.
  - Step 2: connect to device AP with name HVAC_XXXX (XXXX last 4 character MAC address)
  - Step 3: You should be automatically redirected to the web portal or go to 192.168.1.1
  - Step 4: set Wifi information, save & reboot. Fall back to AP mode if WiFi connection fails (AP password sets to default SSID name from step 2).

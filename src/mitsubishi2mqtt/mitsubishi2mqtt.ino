@@ -14,12 +14,12 @@
   Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 */
 
-#include "FS.h"               // SPIFFS for store config
 #ifdef ESP32
 #include <WiFi.h>             // WIFI for ESP32
 #include <WiFiUdp.h>
 #include <ESPmDNS.h>          // mDNS for ESP32
 #include <WebServer.h>        // webServer for ESP32
+#include "FS.h"               // SPIFFS for store config
 #include "SPIFFS.h"           // ESP32 SPIFFS for store config
 WebServer server(80);         //ESP32 web
 #else
@@ -27,6 +27,12 @@ WebServer server(80);         //ESP32 web
 #include <WiFiClient.h>
 #include <ESP8266mDNS.h>      // mDNS for ESP8266
 #include <ESP8266WebServer.h> // webServer for ESP8266
+#ifdef USE_LITTLEFS
+#include "LittleFS.h"         // LittleFS for store config
+#define SPIFFS LittleFS
+#else
+#include "FS.h"               // SPIFFS for store config
+#endif
 ESP8266WebServer server(80);  // ESP8266 web
 #endif
 #include <ArduinoJson.h>      // json to process MQTT: ArduinoJson 6.11.4
